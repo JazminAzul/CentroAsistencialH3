@@ -11,7 +11,7 @@ class LoginForm(Form):
 
 
 
-class buscar(ModelForm):
+class BuscarForm(ModelForm):
     buscador = forms.CharField(max_length=40)
 
 
