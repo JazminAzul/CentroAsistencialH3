@@ -1,9 +1,9 @@
-{% extends "login.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 
 
 
-{% block body %}
+{% block content %}
 
 
 <h1>{{ paciente }}</h1>
@@ -13,6 +13,12 @@
   <dd>{{ paciente.dni }}</dd>
   <dt>Sexo</dt>
   <dd>{{ paciente.sexo }}</dd>
+  <dt>Fecha Nacimiento</dt>
+  <dd>{{ paciente.fecha_nacimiento }}</dd>
+  <dt>Edad</dt>
+  <dd>{{ paciente.edad }}</dd>
+  <dt>Domicilio</dt>
+  <dd>{{ paciente.domicilio }}</dd>
 </dl>
 
 
@@ -40,4 +46,4 @@
 
 
 
-{% endblock body %}
+{% endblock content %}

@@ -4,9 +4,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-
+	url(r'^$', 'CentroAsist.views.buscar_paciente', name= 'buscar_paciente'),
+    
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^paciente/buscador', 'CentroAsist.views.buscar_paciente', name= 'buscar_paciente'),
     url(r'^paciente/nuevo','CentroAsist.views.registro_paciente', name='registro_paciente'),
 
     url(r'^paciente/(?P<id_paciente>\d+)','CentroAsist.views.registro_hc', name='registro_hc'),
