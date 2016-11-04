@@ -1,0 +1,29 @@
+{% extends "login.html" %}
+{% load staticfiles %}
+
+
+
+{% block body %}
+
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<form id="buscador" action="/search" style="display:inline;" method="get">
+<input id="caja_de_busqueda" name="q" placeholder="Introduce tu busqueda..." />
+<input id="boton_de_buscar" value="Buscar" type="submit" /></form>
+
+
+</body>
+
+</html>
+
+
+
+
+{% endblock body %}
