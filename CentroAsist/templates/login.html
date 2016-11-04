@@ -1,24 +1,6 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
-  <head>
-    <script LANGUAGE="Javascript">
-        var txt=" Centro Asistencial";
-        var espera=300;
-        var refresco=null;
-        function rotulo_title() {
-            document.title=txt;
-            txt=txt.substring(1,txt.length)+txt.charAt(0);
-            refresco=setTimeout("rotulo_title()",espera);
-        }
-        rotulo_title();
-    </script>
-</head>
-<body>
-<center><img src ="{% static "imagen/centro.png" %}" WIDTH=980></center>
-<br>
+{% extends "base.html" %}
 
-{% block body %}
+{% block content %}
 
 
 <FORM name=form method="post">
@@ -30,8 +12,4 @@
 </FORM>
 
 
-{% endblock body %}
-
-
-</body>
-</html>
+{% endblock content %}
