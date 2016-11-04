@@ -1,29 +1,24 @@
-{% extends "login.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 
 
 
-{% block body %}
-
-
-<html>
-
-<head>
-
-</head>
-
-<body>
-
-<form id="buscador" action="/search" style="display:inline;" method="get">
-<input id="caja_de_busqueda" name="q" placeholder="Introduce tu busqueda..." />
-<input id="boton_de_buscar" value="Buscar" type="submit" /></form>
-
-
-</body>
-
-</html>
+{% block content %}
 
 
 
 
-{% endblock body %}
+<form method="post" action="">
+	{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Buscar" />
+</form>
+
+{% if pacientes %}
+<ul>
+	{% for paciente in pacientes %}
+		<li><a href="/paciente/{{ paciente.id }}">{{ paciente }}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endblock content %}
