@@ -2,7 +2,7 @@
 
 
 from django.shortcuts import render, redirect,get_object_or_404
-from CentroAsistencial.forms import (LoginForm, PacienteForm, RegistroHCForm)
+from CentroAsistencial.forms import (LoginForm, PacienteForm, RegistroHCForm, BuscarForm)
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -44,6 +44,7 @@ def logout(request):
 @login_required
 def home(request):
     return render_to_response('login.html')
+
 
 
 @login_required
@@ -90,16 +91,33 @@ def registro_paciente(request, id_paciente=None):
 
 
 def buscar_paciente(request):
-    pacientes= []
-    form = BuscarForm()
-    if request.method=='POST'
+    if request.method == 'GET' :
+        paciente = []
+    if request.method == 'POST' :
         form = BuscarForm(request.POST)
         if form.is_valid():
-            Paciente= Paciente.objects.filter(paciente=paciente).order_by('apellido', 'dni','id')
+            paciente= Paciente.objects.filter(apellido__icontains=form.cleaned_data['busqueda'])
 
-    return render(request, 'buscar.html', {'form': form, 'pacientes': pacientes})
+        else:
+
+            form= BuscarForm()
+        
+
+    return render_to_response(request, 'buscador.html', {'form': form, 'paciente': paciente}, context_instance=RequestContext(request))
 
 
+
+
+
+
+
+
+
+    
+    
+    
+
+    
 
 
 
