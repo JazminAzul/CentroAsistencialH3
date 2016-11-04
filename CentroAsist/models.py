@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 
 
@@ -30,6 +31,11 @@ class Paciente(models.Model):
     numero_hc = models.CharField(max_length=10,
                                  null=True, blank=True,
                                  help_text='Numero historia clinica en archivo físico')
+
+
+    def edad(self):
+        return int((now().date() - self.fecha_nacimiento). days / 365.25)
+
 
     def __str__(self):
         return "{} {}".format(self.nombre, self.apellido)
