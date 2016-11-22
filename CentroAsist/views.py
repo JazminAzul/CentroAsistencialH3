@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from CentroAsist.models import Paciente, Profesional, RegistroHC, Adjuntos, PalabrasClave
 from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 def login_view(request):
@@ -99,9 +100,10 @@ def buscar_paciente(request):
     if request.method == 'POST' :
         form = BuscadorForm(request.POST)
         if form.is_valid():
-            pacientes = Paciente.objects.filter(
-                apellido__icontains=form.cleaned_data['buscador'])
+            pacientes = Paciente.objects.filter(Q(
+                apellido__icontains=form.cleaned_data['buscador']) | Q( dni__icontains=form.cleaned_data['buscador']))
 
+    
     else:
         form = BuscadorForm()
         
